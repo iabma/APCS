@@ -1,0 +1,13 @@
+Discussion Log
+Ian Balaguera
+9.10.18
+--------------------------------------------------------------------------------
+
+9.7.18
+9:30am
+Question:   I wasn’t sure how to add a delay to a for loop.
+Resolution: I googled “java delay loop” for help and learned that Thread.sleep() 
+	    does the trick, given the method throws InterruptedException.
+Resource:   https://stackoverflow.com/questions/8586137/java-delay-wait
+
+--------------------------------------------------------------------------------

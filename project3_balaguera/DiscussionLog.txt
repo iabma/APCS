@@ -1,0 +1,44 @@
+Discussion Log
+Ian Balaguera
+10.3.18
+--------------------------------------------------------------------------------
+
+9.28.18
+12:33pm
+Question:   I wasn’t sure how to give color to characters in the console.
+Resolution: I googled “java console color output terminal” for help and found out that I could use ANSI escape codes.
+Resource:   https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
+
+--------------------------------------------------------------------------------
+
+9.28.18
+1:02pm
+Question:   I wanted to know what the average road bike weighs.
+Resolution: I googled “average road bike mass” and found an answer of 15 pounds, which i then converted to kilograms by googling “pounds to kilograms”
+Resource:   https://www.ebay.com/gds/how-much-does-this-bicycle-weigh/10000000001873490/g.html
+
+--------------------------------------------------------------------------------
+
+9.28.18
+1:21pm
+Question:   I wanted to know how to convert a string to an int.
+Resolution: I googled “to integer java” and found that I could use Integer.parseInt() for this problem.
+Resource:   https://stackoverflow.com/questions/5585779/how-do-i-convert-a-string-to-an-int-in-java
+
+--------------------------------------------------------------------------------
+
+9.28.18
+1:30pm
+Question:   I wanted to know how to best convert an int to a double.
+Resolution: I googled “int to double java” and learned that I could place (double) to convert an int to a double and vice versa.
+Resource:   https://stackoverflow.com/questions/13252903/i-need-to-convert-an-int-variable-to-double
+
+--------------------------------------------------------------------------------
+
+9.29.18
+5:57pm
+Question:   I wanted to know how to round a double.
+Resolution: I googled “java round double” and found my question answered.
+Resource:   https://stackoverflow.com/questions/153724/how-to-round-a-number-to-n-decimal-places-in-java
+
+--------------------------------------------------------------------------------
