@@ -6,7 +6,7 @@ import java.io.File;
  * This program will convert an encoded message into a legible output in the console using given
  * transformations.
  * @author Ian Balaguera
- * @version 10.30.18
+ * @version 10.31.18
  */
 public class Driver {
     /**
