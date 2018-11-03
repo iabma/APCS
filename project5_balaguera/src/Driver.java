@@ -18,7 +18,7 @@ public class Driver {
      * @return the modified word, unless the desired substring is not in the inputted word, in
      * which case it simply returns the inputted word.
      */
-    private static String convert(String word, String toFind, String toReplace) {
+    public static String convert(String word, String toFind, String toReplace) {
         String modifiedWord = word.substring(0, word.indexOf(toFind)) + toReplace +
                 word.substring(word.indexOf(toFind) - 1 + toReplace.length());
         return !word.contains(toFind) ? word : modifiedWord;

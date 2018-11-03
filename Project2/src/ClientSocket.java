@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class ClientSocket {
 
     public static void main(String[] args) throws IOException {
+        String host = "";
         int port = 8001;
 
         System.out.println("Connecting to apcs.roxburylatin.org on port " + port + "...");
@@ -29,7 +30,7 @@ public class ClientSocket {
 
         writer.println(message);
         System.out.println("CLIENT: " + message);
-        System.out.println("");
+        System.out.println();
 
         writer.flush();
 
