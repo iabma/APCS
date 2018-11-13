@@ -1,0 +1,116 @@
+===============================================================================
+                           BOYS VARSITY RESULTS
+Place TmPl Race# Name                     School                   Class Time    Pace
+===== ==== ===== ======================== ======================== ===== ======= =====
+    1    1   519 Aly Hussein              TABOR ACADEMY            2019    16:37  5:21
+    2    2   562 Emmett De Kanter         WESTMINSTER              2019    16:41  5:23
+    3    3   546 Tommy Gaffey             THAYER ACADEMY           2020    16:53  5:26
+    4    4   520 Yudai Yamakawa           TABOR ACADEMY            2019    16:54  5:27
+    5    5   470 Will Cote                ROXBURY LATIN            2021    16:57  5:28
+    6    6   472 Quinn Donovan            ROXBURY LATIN            2021    16:58  5:28
+    7    7   372 Nicolas Burtson          HOPKINS                  2020    17:03  5:29
+    8    8   496 Daniel Krasemann         SUFFIELD ACADEMY         2019    17:17  5:34
+    9    9   439 Justin O'Toole           MIDDLESEX                2020    17:21  5:35
+   10   10   374 Charles Mason            HOPKINS                  2019    17:25  5:37
+   11   11   375 David Judd               HOPKINS                  2020    17:26  5:37
+   12   12   361 Leo McMahon              GROTON                   2019    17:28  5:38
+   13   13   476 Mark Henshon             ROXBURY LATIN            2022    17:30  5:38
+   14   14   430 Caleb Gartner            MIDDLESEX                2021    17:32  5:39
+   15   15   464 Lev Sandler              NOBLES                   2019    17:37  5:40
+   16   16   483 Javi Werner              ROXBURY LATIN            2021    17:45  5:43
+   17   17   523 Mahiro Yamakawa          TABOR ACADEMY            2020    17:46  5:44
+   18   18   449 Finn Crawford            NOBLES                   2020    17:48  5:44
+   19   19   474 Daniel Gillis            ROXBURY LATIN            2020    17:51  5:45
+   20   20   582 Oscar Defrancis          WILLISTON                2020    17:52  5:45
+   21   21   567 Kieran Haug              WESTMINSTER              2021    17:57  5:47
+   22   22   498 Jack Lynam               SUFFIELD ACADEMY         2022    17:59  5:48
+   23   23   576 Justin Schuster          WESTMINSTER              2019    18:00  5:48
+   24   24   573 Daniel Pinckney          WESTMINSTER              2020    18:03  5:49
+   25   25   421 Cooper Austen            MIDDLESEX                2022    18:03  5:49
+   26   26   441 Jacob Starobin           MIDDLESEX                2020    18:04  5:49
+   27   27   369 Tyler Weisberg           GROTON                   2022    18:04  5:49
+   28   28   521 Sam Gordon               TABOR ACADEMY            2019    18:04  5:49
+   29   29   522 Andrew Mottur            TABOR ACADEMY            2021    18:04  5:49
+   30   30   364 Aroon Sankoh             GROTON                   2021    18:07  5:50
+   31   31   479 Nolan McKenna            ROXBURY LATIN            2021    18:17  5:53
+   32   32   373 Connor Hartigan          HOPKINS                  2019    18:22  5:55
+   33   33   293 Harrison Chapin          BERKSHIRE                2020    18:27  5:57
+   34   34   477 George Madison           ROXBURY LATIN            2022    18:30  5:58
+   35   35   591 Nat Markey               WILLISTON                2020    18:33  5:59
+   36   36   420 Jack Audett              MIDDLESEX                2019    18:39  6:00
+   37   37   435 David Latham             MIDDLESEX                2021    18:39  6:01
+   38   38   351 Derek Chang              GROTON                   2020    18:40  6:01
+   39   39   487 Max Lampe                SALISBURY                2022    18:42  6:01
+   40   40   432 Andrew Harris            MIDDLESEX                2021    18:43  6:02
+   41   41   500 Nick Briones             SUFFIELD ACADEMY         2020    18:43  6:02
+   42   42   569 Elliott Kennard          WESTMINSTER              2019    18:45  6:02
+   43   43   366 Gus Vrattos              GROTON                   2019    18:47  6:03
+   44   44   362 John Michaud             GROTON                   2020    18:49  6:04
+   45   45   575 Will Rizzo               WESTMINSTER              2021    18:52  6:05
+   46   46   330 Albert Cha               THE GOVERNOR'S ACADEMY   2019    18:52  6:05
+   47   47   356 Joshua Guo               GROTON                   2020    18:54  6:05
+   48   48   320 Julian Li                BB&N                     2020    19:07  6:10
+   49   49   450 Patrick Denning          NOBLES                   2020    19:07  6:10
+   50   50   461 Justin Qin               NOBLES                   2021    19:11  6:11
+   51   51   295 Emmet McDonnell          BERKSHIRE                2020    19:13  6:11
+   52   52   452 Max Gomez                NOBLES                   2022    19:14  6:12
+   53   53   524 Jack Hutchison           TABOR ACADEMY            2020    19:18  6:13
+   54   54   544 Josh Chaskes             THAYER ACADEMY           2019    19:19  6:13
+   55   55   318 Mathew Hong              BB&N                     2021    19:22  6:14
+   56   56   294 William Warlick          BERKSHIRE                2020    19:24  6:15
+   57   57   401 Bobby Wittman            KENT                     2021    19:24  6:15
+   58   58   589 Artur Lysyuk             WILLISTON                2019    19:24  6:15
+   59   59   499 Ethan Ash                SUFFIELD ACADEMY         2020    19:25  6:15
+   60   60   587 Jerry Landman            WILLISTON                2022    19:26  6:16
+   61   61   458 Chris Millay             NOBLES                   2020    19:27  6:16
+   62   62   467 Will Whalen              NOBLES                   2019    19:27  6:16
+   63   63   296 Jackson Chapin           BERKSHIRE                2020    19:29  6:17
+   64   64   323 Sam Rabieh               BB&N                     2021    19:29  6:17
+   65   65   328 Quinn Anderson-Song      THE GOVERNOR'S ACADEMY   2020    19:33  6:18
+   66   66   400 Jim Wang                 KENT                     2019    19:37  6:19
+   67   67   489 Jackson Polverari        SALISBURY                2019    19:38  6:20
+   68   68   598 Caleb Stern              WILLISTON                2019    19:40  6:20
+   69   69   343 Casey Nardone            THE GOVERNOR'S ACADEMY   2019    19:42  6:21
+   70   70   376 William Cooper           HOPKINS                  2022    19:43  6:21
+   71   71   329 Eric Berard              THE GOVERNOR'S ACADEMY   2021    19:44  6:22
+   72   72   402 Alpin Yukseloglu         KENT                     2019    19:47  6:22
+   73   73   377 Alex Hughes              HOPKINS                  2019    19:48  6:23
+   74   74   502 Jim Hou                  SUFFIELD ACADEMY         2021    19:49  6:23
+   75   75   504 Bobby Flynn              SUFFIELD ACADEMY         2019    19:50  6:23
+   76   76   326 Alex Wu                  BB&N                     2021    19:50  6:23
+   77   77   525 Alec Durkin              TABOR ACADEMY            2019    19:51  6:24
+   78   78   346 Alexander Tollman        THE GOVERNOR'S ACADEMY   2019    19:52  6:24
+   79   79   399 Lucas Pfeifer            KENT                     2020    19:55  6:25
+   80   80   597 Daniel Simpson           WILLISTON                2020    19:57  6:26
+   81   81   564 Alex Ellis               WESTMINSTER              2020    20:01  6:27
+   82   82   344 Trevor Nugent            THE GOVERNOR'S ACADEMY   2021    20:02  6:27
+   83   83   396 Maxim Barskiy            KENT                     2019    20:05  6:28
+   84   84   495 Parker Stone             SALISBURY                2020    20:05  6:28
+   85   85   606 Cooper Dutton            WORCESTER ACADEMY        2021    20:07  6:29
+   86   86   559 Garner Thompson          THAYER ACADEMY           2020    20:08  6:29
+   87   87   378 Joseph Stauff            HOPKINS                  2020    20:09  6:29
+   88   88   490 Rob Luo                  SALISBURY                2020    20:12  6:30
+   89   89   297 Grant Kneisel            BERKSHIRE                2019    20:14  6:31
+   90   90   595 Vishnu Sekar             WILLISTON                2019    20:15  6:31
+   91   91   497 George Bauer             SUFFIELD ACADEMY         2021    20:21  6:33
+   92   92   321 Ryan Loughran            BB&N                     2020    20:24  6:34
+   93   93   332 Jack Gilbert             THE GOVERNOR'S ACADEMY   2021    20:25  6:35
+   94   94   488 Billy Duffy              SALISBURY                2019    20:30  6:36
+   95   95   603 Andrew Adiletta          WORCESTER ACADEMY        2019    20:34  6:38
+   96   96   550 Ben Koper                THAYER ACADEMY           2022    20:38  6:39
+   97   97   417 Brandon Schuster         KENT                     2019    20:40  6:39
+   98   98   298 Basil Shillingford       BERKSHIRE                2021    20:40  6:40
+   99   99   613 Christopher MacLean      WORCESTER ACADEMY        2021    20:46  6:41
+  100  100   547 Aidan Humphries          THAYER ACADEMY           2022    20:49  6:42
+  101  101   491 Jack Zhan                SALISBURY                2019    20:54  6:44
+  102  102   398 Tyler Krasusky           KENT                     2020    20:55  6:44
+  103  103   615 Nicholas Manz            WORCESTER ACADEMY        2020    21:02  6:46
+  104  104   299 Gohta Aihara             BERKSHIRE                2019    21:24  6:53
+  105  105   545 Ryan Chiari              THAYER ACADEMY           2022    21:27  6:54
+  106  106   609 Yixin Huang              WORCESTER ACADEMY        2021    21:27  6:55
+  107  107   543 Alec Borges              THAYER ACADEMY           2022    21:32  6:56
+  108  108   312 James Brunelli-C         BB&N                     2019    21:37  6:58
+  109  109   492 Holden Hobbs             SALISBURY                2020    21:38  6:58
+  110  110   616 James Marculitis         WORCESTER ACADEMY        2019    21:46  7:01
+  111  111   316 Matthew Fitzgerald       BB&N                     2021    22:19  7:11
+  112  112   618 Aiden Ormsby             WORCESTER ACADEMY        2019    22:25  7:13
