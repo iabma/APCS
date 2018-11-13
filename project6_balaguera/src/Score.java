@@ -1,6 +1,17 @@
-import java.util.Scanner;
-
+/**
+ * Calculates the score of a dual meet.
+ * @author Ian Balaguera
+ * @version 11.13.18
+ */
 public class Score {
+    /**
+     * Iterates through the data and finds the first five runner positions and compares them.
+     * If they are tied, it goes to the sixth place runner for each team.
+     * @param data the input in String array form.
+     * @param teamOne the first team's name.
+     * @param teamTwo the second team's name.
+     * @return a formatted output indicating the winning team.
+     */
     public static String calculateScore(String[] data, String teamOne, String teamTwo) {
         int pointIndex = 1;
         int pointsOne = 0;
@@ -31,17 +42,17 @@ public class Score {
         }
 
         if (pointsOne < pointsTwo) {
-            return String.format("%s - %s\n%s - %s", teamOne.trim().toUpperCase(), pointsOne,
-                    teamTwo.trim().toUpperCase(), pointsTwo);
+            return String.format("%s - %s <-- WINNER\n%s - %s", teamOne.trim().toUpperCase(),
+                    pointsOne, teamTwo.trim().toUpperCase(), pointsTwo);
         } else if (pointsOne == pointsTwo) {
-            if (teamOneSix < teamTwoSix) return String.format("%s - %s\n%s - %s",
+            if (teamOneSix < teamTwoSix) return String.format("%s - %s <-- WINNER\n%s - %s",
                     teamOne.trim().toUpperCase(), pointsOne, teamTwo.trim().toUpperCase(),
                     pointsTwo);
-            else return String.format("%s - %s\n%s - %s", teamTwo.trim().toUpperCase(), pointsTwo,
-                    teamOne.trim().toUpperCase(), pointsOne);
+            else return String.format("%s - %s <-- WINNER\n%s - %s", teamTwo.trim().toUpperCase(),
+                    pointsTwo, teamOne.trim().toUpperCase(), pointsOne);
         } else {
-            return String.format("%s - %s\n%s - %s", teamTwo.trim().toUpperCase(), pointsTwo,
-                    teamOne.trim().toUpperCase(), pointsOne);
+            return String.format("%s - %s <-- WINNER\n%s - %s", teamTwo.trim().toUpperCase(),
+                    pointsTwo, teamOne.trim().toUpperCase(), pointsOne);
         }
     }
 }
