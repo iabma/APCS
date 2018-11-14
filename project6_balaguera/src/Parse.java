@@ -7,14 +7,14 @@ import java.util.Scanner;
  * @version 11.13.18
  */
 public class Parse {
+    private String[] data;
+
     /**
      * Converts the inputted .txt file into a String array consisting only of the necessary data.
-     * @param fileName the name of the input file.
-     * @return the input file in String array form.
-     * @throws Exception this is above my pay raise I don't want to write a try catch for this
-     * project
+     * @param fileName the xc.txt file, for this specific project
+     * @throws Exception if the requested file does not exist
      */
-    public static String[] read(String fileName) throws Exception {
+    public Parse (String fileName) throws Exception {
         Scanner input = new Scanner(new File(fileName));
         Scanner second = new Scanner(new File(fileName));
         skipIntro(input);
@@ -25,7 +25,7 @@ public class Parse {
             numLines++;
         }
 
-        String[] data = new String[numLines];
+        data = new String[numLines];
         skipIntro(second);
         for (int i = 0; i < numLines; i++) {
             data[i] = second.nextLine();
@@ -33,14 +33,16 @@ public class Parse {
 
         input.close();
         second.close();
-
-        return data;
     }
 
     /**
-     * Skips the unneeded first four lines of the input file.
-     * @param input the input file scanner.
+     * Provides the parsed data.
+     * @return data
      */
+    public String[] data() {
+        return data;
+    }
+
     private static void skipIntro(Scanner input) {
         for (int i = 0; i < 4; i++) {
             input.nextLine();

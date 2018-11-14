@@ -18,6 +18,12 @@ public class Driver {
 
         userIn.close();
 
-        System.out.println(Score.calculateScore(Parse.read(fileName), teamOne, teamTwo));
+        Parse parsedFile = new Parse(fileName);
+
+        DualMeet meet = new DualMeet(parsedFile.data(), teamOne, teamTwo);
+
+        meet.calculateScore();
+
+        System.out.println(meet);
     }
 }
