@@ -7,17 +7,26 @@ import java.util.Scanner;
  * @version 11.13.18
  */
 public class Parse {
+    private final int INTRO_LENGTH = 4;
     private String[] data;
+    private Scanner input;
+    private Scanner second;
 
     /**
-     * Converts the inputted .txt file into a String array consisting only of the necessary data.
+     * Sets the two necessary scanners to the file name.
      * @param fileName the xc.txt file, for this specific project
      * @throws Exception if the requested file does not exist
      */
     public Parse (String fileName) throws Exception {
-        Scanner input = new Scanner(new File(fileName));
-        Scanner second = new Scanner(new File(fileName));
-        skipIntro(input);
+        input = new Scanner(new File(fileName));
+        second = new Scanner(new File(fileName));
+    }
+
+    /**
+     * Converts the inputted .txt file into a String array consisting only of the necessary data.
+     */
+    public void parse() {
+        skip(input, INTRO_LENGTH);
 
         int numLines = 0;
         while (input.hasNextLine()) {
@@ -26,7 +35,8 @@ public class Parse {
         }
 
         data = new String[numLines];
-        skipIntro(second);
+
+        skip(second, INTRO_LENGTH);
         for (int i = 0; i < numLines; i++) {
             data[i] = second.nextLine();
         }
@@ -43,8 +53,8 @@ public class Parse {
         return data;
     }
 
-    private static void skipIntro(Scanner input) {
-        for (int i = 0; i < 4; i++) {
+    private void skip(Scanner input, int numLines) {
+        for (int i = 0; i < numLines; i++) {
             input.nextLine();
         }
     }

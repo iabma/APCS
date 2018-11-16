@@ -1,89 +1,85 @@
 /**
  * Creates a Dual Meet object which can calculate the winner and the respective scores.
+ * Tiebreakers are determined by the point values of the sixth place runners.
  * @author Ian Balaguera
- * @version 11.14.18
+ * @version 11.15.18
  */
 public class DualMeet {
+    private final int NUM_SCORED_RUNNERS = 5;
+    private final int TIEBREAKING_PLACE = NUM_SCORED_RUNNERS + 1;
     private String[] data;
-    private String teamOne;
-    private String teamTwo;
-    private String winner;
-    private String loser;
+    private String[] teams;
+    private int[] numPlayers;
+    private int[] points;
+    private int[] sixthPlacePoints;
     private int pointIndex;
-    private int pointsOne;
-    private int pointsTwo;
-    private int numPlayersOne;
-    private int numPlayersTwo;
-    private int teamOneSix;
-    private int teamTwoSix;
 
     /**
      * Constructs a Dual Meet object using the necessary data and team names.
      * @param data the input in String array form
-     * @param teamOne the first team's name
-     * @param teamTwo the second team's name
      */
-    public DualMeet(String[] data, String teamOne, String teamTwo) {
+    public DualMeet(String[] data) {
         this.data = data;
-        this.teamOne = teamOne;
-        this.teamTwo = teamTwo;
+        teams = new String[2];
+        numPlayers = new int[2];
+        points = new int[2];
+        sixthPlacePoints = new int[2];
         pointIndex = 1;
-        pointsOne = 0;
-        pointsTwo = 0;
-        numPlayersOne = 0;
-        numPlayersTwo = 0;
-        teamOneSix = 0;
-        teamTwoSix = 0;
     }
 
     /**
-     * Iterates through the data and finds the first five runner positions and compares them.
-     * If they are tied, it goes to the sixth place runner for each team.
+     * Adds a team by index to the array of teams.
+     * @param name  the school name
+     * @param index the position of the school name in the team String array
+     */
+    public void addTeam(String name, int index) {
+        teams[index] = name;
+    }
+
+    /**
+     * Iterates through the data and finds the first six runner positions and their respective
+     * point values.
      */
     public void calculateScore() {
-        for (int i = 0; i < data.length; i++) {
-            if (data[i].substring(42, 67).trim().equalsIgnoreCase(teamOne)) {
-                numPlayersOne++;
-                if (numPlayersOne <= 5) {
-                    pointsOne += pointIndex;
-                } else if (numPlayersOne == 6) {
-                    teamOneSix = pointIndex;
+        for (String line : data) {
+            for (int j = 0; j < teams.length; j++) {
+                if (line.contains(teams[j].toUpperCase())) {
+                    numPlayers[j]++;
+                    if (numPlayers[j] <= NUM_SCORED_RUNNERS) {
+                        points[j] += pointIndex;
+                    } else if (numPlayers[j] == TIEBREAKING_PLACE) {
+                        sixthPlacePoints[j] = pointIndex;
+                    }
+                    pointIndex++;
                 }
-                pointIndex++;
-            } else if (data[i].substring(42, 67).trim().equalsIgnoreCase(teamTwo)) {
-                numPlayersTwo++;
-                if (numPlayersTwo <= 5) {
-                    pointsTwo += pointIndex;
-                } else if (numPlayersTwo == 6) {
-                    teamTwoSix = pointIndex;
-                }
-                pointIndex++;
             }
-        }
-
-        if (pointsOne < pointsTwo) {
-            winner = String.format("%s - %s <-- WINNER", teamOne.trim().toUpperCase(), pointsOne);
-            loser = String.format("%s - %s", teamTwo.trim().toUpperCase(), pointsTwo);
-        } else if (pointsOne == pointsTwo) {
-            if (teamOneSix < teamTwoSix) {
-                winner = String.format("%s - %s <-- WINNER", teamOne.trim().toUpperCase(), pointsOne);
-                loser = String.format("%s - %s", teamTwo.trim().toUpperCase(), pointsTwo);
-            } else {
-                winner = String.format("%s - %s <-- WINNER", teamTwo.trim().toUpperCase(), pointsTwo);
-                loser = String.format("%s - %s", teamOne.trim().toUpperCase(), pointsOne);
-            }
-        } else {
-            winner = String.format("%s - %s <-- WINNER", teamTwo.trim().toUpperCase(), pointsTwo);
-            loser = String.format("%s - %s", teamOne.trim().toUpperCase(), pointsOne);
         }
     }
 
     /**
      * Overrides the default toString() so the object can be directly printed.
+     * Checks if there is a clear winner. If the two teams tied, the tiebreaker will be decided
+     * by the sixth place runners.
      * @return ranked dual meet scores
      */
     @Override
     public String toString() {
-        return String.format("%s\n%s", winner, loser);
+        if (points[0] < points[1]) {
+            return  String.format("%s - %s <-- WINNER\n%s - %s", teams[0].toUpperCase(),
+                    points[0], teams[1].toUpperCase(), points[1]);
+        } else if (points[0] == points[1]) {
+            if (sixthPlacePoints[0] < sixthPlacePoints[1]) {
+                return String.format("%s - %s <-- TIE WINNER (%d points)\n%s - %s",
+                        teams[0].trim().toUpperCase(), points[0], sixthPlacePoints[0],
+                        teams[1].toUpperCase(), points[1]);
+            } else {
+                return String.format("%s - %s <-- TIE WINNER (%d points)\n%s - %s",
+                        teams[1].trim().toUpperCase(), points[1], sixthPlacePoints[1],
+                        teams[0].toUpperCase(), points[0]);
+            }
+        } else {
+            return  String.format("%s - %s <-- WINNER\n%s - %s", teams[1].toUpperCase(),
+                    points[1], teams[0].toUpperCase(), points[0]);
+        }
     }
 }

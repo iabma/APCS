@@ -7,46 +7,37 @@ import java.util.Scanner;
  */
 public class Driver {
     public static void main(String[] args) throws Exception {
-        String[] teams = {"TABOR ACADEMY", "WESTMINSTER", "THAYER ACADEMY", "ROXBURY LATIN",
-                "GROTON", "WORCESTER ACADEMY", "HOPKINS", "SUFFIELD ACADEMY", "MIDDLESEX",
-                "NOBLES", "BERKSHIRE", "SALISBURY", "BB&N", "KENT", "THE GOVERNOR'S ACADEMY",};
+        final String[] TEAM_NAMES = {"TABOR ACADEMY", "WESTMINSTER", "THAYER ACADEMY",
+                "ROXBURY LATIN", "GROTON", "WORCESTER ACADEMY", "HOPKINS", "SUFFIELD ACADEMY",
+                "MIDDLESEX", "NOBLES", "BERKSHIRE", "SALISBURY", "BB&N", "KENT",
+                "THE GOVERNOR'S ACADEMY", "WILLISTON"};
         String fileName = "xc.txt";
         Scanner userIn = new Scanner(System.in);
+        Parse parsedFile = new Parse(fileName);
 
-        String teamOne = "";
-        boolean realTeamOne = false;
-        while (!realTeamOne) {
-            System.out.print("First team: ");
-            teamOne = userIn.nextLine();
-            for (int i = 0; i < teams.length; i++) {
-                if (teamOne.trim().equalsIgnoreCase(teams[i])) {
-                    realTeamOne = true;
-                }
-            }
-            if (!realTeamOne) System.out.println("Invalid team name.");
-        }
+        parsedFile.parse();
 
-        String teamTwo = "";
-        boolean realTeamTwo = false;
-        while (!realTeamTwo) {
-            System.out.print("Second team: ");
-            teamTwo = userIn.nextLine();
-            for (int i = 0; i < teams.length; i++) {
-                if (teamTwo.trim().equalsIgnoreCase(teams[i])) {
-                    realTeamTwo = true;
+        DualMeet meet = new DualMeet(parsedFile.data());
+
+        for (int i = 0; i < 2; i++) {
+            String team = "";
+            boolean realTeam = false;
+            while (!realTeam) {
+                System.out.print("Team: ");
+                team = userIn.nextLine();
+                for (String name : TEAM_NAMES) {
+                    if (team.trim().equalsIgnoreCase(name)) {
+                        realTeam = true;
+                    }
                 }
+                if (!realTeam) System.out.println("Invalid team name.");
             }
-            if (!realTeamTwo) System.out.println("Invalid team name.");
+            meet.addTeam(team, i);
         }
 
         userIn.close();
 
-        Parse parsedFile = new Parse(fileName);
-
-        DualMeet meet = new DualMeet(parsedFile.data(), teamOne, teamTwo);
-
         meet.calculateScore();
-
         System.out.println(meet);
     }
 }
