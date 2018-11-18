@@ -19,19 +19,23 @@ public class Driver {
 
         DualMeet meet = new DualMeet(parsedFile.data());
 
+        String firstTeamName = "";
         for (int i = 0; i < 2; i++) {
             String team = "";
-            boolean realTeam = false;
-            while (!realTeam) {
+            boolean valid = false;
+            while (!valid) {
                 System.out.print("Team: ");
                 team = userIn.nextLine();
-                for (String name : TEAM_NAMES) {
-                    if (team.trim().equalsIgnoreCase(name)) {
-                        realTeam = true;
-                    }
+                team = AutoCorrect.check(team);
+                valid = !team.equals("!not!");
+                if (team.trim().equalsIgnoreCase(firstTeamName)) {
+                    System.out.println("Team name has already been inputted.");
+                    valid = false;
                 }
-                if (!realTeam) System.out.println("Invalid team name.");
+                if (!valid) System.out.println("Invalid team name.");
             }
+            firstTeamName = team;
+            System.out.println(team);
             meet.addTeam(team, i);
         }
 
