@@ -5,13 +5,15 @@ public class AutoCorrect {
             "ROXBURY LATIN", "GROTON", "WORCESTER ACADEMY", "HOPKINS", "SUFFIELD ACADEMY",
             "MIDDLESEX", "NOBLES", "BERKSHIRE", "SALISBURY", "BB&N", "KENT",
             "THE GOVERNOR'S ACADEMY", "WILLISTON"};
+    private static final int NKPL = 14;
+
     private static char[][] teamSeq = new char[TEAM_NAMES.length][25];
-    private static char[] horizOrder = {'`','1','2','3','4','5','6','7','8','9','0','-','=','q'
-        ,'w','e','r','t','y','u','i','o','p','[',']','a', 's','d','f','g','h','j','k','l',';',
-        'z','x','c','v','b','n','m',',','.','/'};
-    private static char[] vertOrder = {'1','q','a','z','2','w','s','x','3','e','d','c',' ',
-            '4','r','f','v',' ','5','t','g','b',' ','6','y','h','n','7','u','j','m','8','i',
-            'k',',','9','o','l','.','0','p',';','/','-','[','=',']'};
+    private static char[] chars = {
+            '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 127,
+              9, 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']',  92,
+              7,   7, 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';',  39,  13,
+             32,  32, 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/',  32,  32,
+              7,   7,   7,   7, ' ', ' ', ' ', ' ', ' ',   7,   7,   7,   7,   7, };
 
     public static String check(String toCheck) {
         convertToSeq();
@@ -27,13 +29,13 @@ public class AutoCorrect {
         for (int i = 0; i < TEAM_NAMES.length; i++) {
             double meanOffset = 0;
             for (int j = 0; j < seq.length; j++) {
-                double avgDist =
-                        ((double) Arrays.toString(horizOrder).indexOf(seq[j]) -
-                                (double) Arrays.toString(horizOrder).indexOf(teamSeq[i][j]) +
-                                (double) Arrays.toString(vertOrder).indexOf(seq[j]) -
-                                (double) Arrays.toString(vertOrder).indexOf(teamSeq[i][j]))/2;
-                //System.out.print(avgDist + " ");
-                meanOffset += Math.abs(avgDist);
+                int seqIndex = Arrays.toString(chars).indexOf(seq[j]);
+                int teamSeqIndex = Arrays.toString(chars).indexOf(teamSeq[i][j]);
+                double dist = Math.sqrt(
+                        Math.pow((double)(seqIndex % NKPL - teamSeqIndex % NKPL),2) +
+                        Math.pow((double)(seqIndex / NKPL - teamSeqIndex / NKPL),2));
+                //System.out.print(dist + " ");
+                meanOffset += Math.abs(dist);
             }
             meanOffset += Math.abs(TEAM_NAMES[i].length() - seq.length);
             //System.out.print(Math.abs(TEAM_NAMES[i].length() - seq.length) + " ");

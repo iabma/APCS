@@ -7,10 +7,6 @@ import java.util.Scanner;
  */
 public class Driver {
     public static void main(String[] args) throws Exception {
-        final String[] TEAM_NAMES = {"TABOR ACADEMY", "WESTMINSTER", "THAYER ACADEMY",
-                "ROXBURY LATIN", "GROTON", "WORCESTER ACADEMY", "HOPKINS", "SUFFIELD ACADEMY",
-                "MIDDLESEX", "NOBLES", "BERKSHIRE", "SALISBURY", "BB&N", "KENT",
-                "THE GOVERNOR'S ACADEMY", "WILLISTON"};
         String fileName = "xc.txt";
         Scanner userIn = new Scanner(System.in);
         Parse parsedFile = new Parse(fileName);

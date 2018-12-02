@@ -1,0 +1,73 @@
+Project 7 - Connect Four
+Your project must be named project7_[your_last_name]
+
+Project Specification
+Connect Four is a game played in a game board 7 columns wide and 6 rows high. Two players take turns dropping pieces into columns of a vertical grid, one piece per turn, where they stack up in various patterns of pieces (from the bottom up) until the game ends when one player places four of their pieces in a row vertically, horizontally, or diagonally. In some instances, the game board fills up completely with neither player successfully “connecting four” -- in this case, the game ends in a draw.
+
+Your task is to program Connect Four for two players to play against each other. The game board should start empty and fill up as players take turns. After every turn, the board should be updated and printed so the next player can make an informed moved. As soon as one player wins, the win should be reported to the players, and the game should end. If the game ends in a draw, that should be reported as well.
+
+You must provide error-checking code to prevent any errors that could occur during game play (i.e. a player electing to move a piece to an invalid location).
+
+Input
+Players must be able to enter moves and the game must react appropriately.
+
+Output
+Provide user-friendly output to inform users of the game that they are playing. It should always be clear whose turn it is, and the current state of the board should be printed after every move. When the game is won, a clear message indicating who won should be printed. If any errors occur during the game, a clear message should be printed and the game should continue appropriately.
+
+Sample Output
+***************************************************************************
+                                  WELCOME TO
+      ______                            __     ______
+     /  ____/___ ____  ____  ___  _____/ /_   / ____/___  __  _______
+    / /   / __ \/ __ \/ __ \/ _ \/ ___/ __/  / /_  / __ \/ / / / ___/
+   / /___/ /_/ / / / / / / /  __/ /__/ /_   / __/ / /_/ / /_/ / /
+   \____/\____/_/ /_/_/ /_/\___/\___/\__/  /_/    \____/\___/_/
+
+***************************************************************************
+This is a two player game.
+Player 1's pieces are marked on the board by '1' characters and Player 2's
+pieces are marked on the board by '2' characters.
+
+The object of the game is to drop pieces into the board, one per turn
+so that four of your pieces connect in a row vertically, horizontally,
+or diagonally. The first player to get four pieces in a row wins!
+
+To take a turn, enter a column number (1-6, left to right) in which to
+drop your piece. Each piece will drop to the bottom of the grid and rest
+atop the last piece dropped into the row.
+
+Player 1 will go first.
+
+
+***************************************************************************
+
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+ ---------------------------
+ -1-|-2-|-3-|-4-|-5-|-6-|-7-
+ ---------------------------
+Player 1’s move >> 5
+
+
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 1 | 0 | 0 |
+ ---------------------------
+ -1-|-2-|-3-|-4-|-5-|-6-|-7-
+ ---------------------------
+Player 2’s move >>
+
+
+Collaboration Policy
+This project will follow the collaboration guidelines outlined in the “Academic Honesty” section of your course syllabus. As always, please reach out if anything in the policy is unclear.
+
+
+This project is due before class on Friday, December 7th.
+Please submit your Java source code as well as your Discussion Log in a zip file via uRL. You will not need to hand in a paper copy of anything.
