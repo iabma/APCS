@@ -1,0 +1,34 @@
+***************************************************************************
+                                  WELCOME TO
+      ______                            __     ______
+     /  ____/___ ____  ____  ___  _____/ /_   / ____/___  __  _______
+    / /   / __ \/ __ \/ __ \/ _ \/ ___/ __/  / /_  / __ \/ / / / ___/
+   / /___/ /_/ / / / / / / /  __/ /__/ /_   / __/ / /_/ / /_/ / /
+   \____/\____/_/ /_/_/ /_/\___/\___/\__/  /_/    \____/\___/_/
+
+***************************************************************************
+This is a two player game.
+Player 1's pieces are marked on the board by '⌬' and Player 2's pieces
+are marked on the board by '⌑'.
+
+The object of the game is to drop pieces into the board, one per turn
+so that four of your pieces connect in a row vertically, horizontally,
+or diagonally. The first player to get four pieces in a row wins!
+
+To take a turn, enter a column number (1-7, left to right) in which to
+drop your piece. Each piece will drop to the bottom of the grid and rest
+atop the last piece dropped into the row.
+
+***************************************************************************
+
+Delim
+
+|   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |
+-----------------------------
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+-----------------------------

@@ -2,24 +2,28 @@ import java.io.PrintStream;
 import java.util.Arrays;
 
 public class Game {
+    private static final String PLAYER_ONE_UNICODE = "\u232C";
+    private static final String PLAYER_TWO_UNICODE = "\u2311";
+    private static final String ANSI_RESET = "\u001B[0m";
     private static final int NUM_ROWS = 6;
     private static final int NUM_COLUMNS = 7;
     private static final int LAST_ROW = NUM_ROWS - 1;
     private static final int LAST_COLUMN = NUM_COLUMNS - 1;
     private static final int NUM_POSSIBLE_DIAGONALS = 6;
     private static final int WIN_LENGTH = 4;
-    private static final String PLAYER_ONE_UNICODE = "\u232C";
-    private static final String PLAYER_TWO_UNICODE = "\u2311";
 
     private String[][] board;
+    private String[] color;
     private Board visualBoard;
 
-    public Game() {
+    public Game(String[] color) {
+        this.color = color;
         board = new String[NUM_COLUMNS][NUM_ROWS];
         for (int i = 0; i < NUM_COLUMNS; i++) {
             Arrays.fill(board[i], " ");
         }
         visualBoard = new Board();
+        System.out.println("\n" + visualBoard);
     }
 
     public boolean spaceInColumn(int column) {
@@ -30,12 +34,13 @@ public class Game {
     }
 
     public int addChip(int column, boolean player) {
-        String playerUnicode = player ? PLAYER_ONE_UNICODE : PLAYER_TWO_UNICODE;
+        String playerChip = player ? color[0] + PLAYER_ONE_UNICODE + ANSI_RESET :
+                color[1] + PLAYER_TWO_UNICODE + ANSI_RESET;
         int row = LAST_ROW;
 
         for (int i = LAST_ROW; i >= 0; i--) {
             if (board[column][i].equals(" ")) {
-                board[column][i] = playerUnicode;
+                board[column][i] = playerChip;
                 row = i;
                 break;
             }
@@ -47,11 +52,12 @@ public class Game {
     }
 
     private int checkCondition(boolean player, int column, int row) {
-        String playerUnicode = player ? PLAYER_ONE_UNICODE : PLAYER_TWO_UNICODE;
+        String playerChip = player ? color[0] + PLAYER_ONE_UNICODE + ANSI_RESET :
+                color[1] + PLAYER_TWO_UNICODE + ANSI_RESET;
         if (row <= NUM_ROWS - WIN_LENGTH) {
             int numInColumn = 0;
             for (int i = 0; i < WIN_LENGTH; i++) {
-                if (board[column][row + i].equals(playerUnicode)) {
+                if (board[column][row + i].equals(playerChip)) {
                     numInColumn++;
                     if (numInColumn == WIN_LENGTH) return 1;
                 } else {
@@ -61,7 +67,7 @@ public class Game {
         }
         int numInRow = 0;
         for (int i = 0; i < NUM_COLUMNS; i++) {
-            if (board[i][LAST_ROW].equals(playerUnicode)) {
+            if (board[i][LAST_ROW].equals(playerChip)) {
                 numInRow++;
                 if (numInRow == WIN_LENGTH) return 1;
             } else {
@@ -69,7 +75,7 @@ public class Game {
             }
         }
 
-        if (checkDiagonal(playerUnicode) == 1) return 1;
+        if (checkDiagonal(playerChip) == 1) return 1;
 
         return checkTie();
     }
@@ -81,13 +87,13 @@ public class Game {
         return 2;
     }
 
-    private int checkDiagonal(String playerUnicode) {
+    private int checkDiagonal(String playerChip) {
         int numInSequence = 0;
 
         for (int i = 0; i < NUM_POSSIBLE_DIAGONALS; i++) {
             if (i < 3) {
                 for (int j = 0; j < i + WIN_LENGTH; j++) {
-                    if (board[j][NUM_ROWS - WIN_LENGTH - i + j].equals(playerUnicode)) {
+                    if (board[j][NUM_ROWS - WIN_LENGTH - i + j].equals(playerChip)) {
                         numInSequence++;
                         if (numInSequence == WIN_LENGTH) return 1;
                     } else {
@@ -96,7 +102,7 @@ public class Game {
                 }
             } else {
                 for (int j = i - 2; j < NUM_COLUMNS; j++) {
-                    if (board[j][j - i + 2].equals(playerUnicode)) {
+                    if (board[j][j - i + 2].equals(playerChip)) {
                         numInSequence++;
                         if (numInSequence == WIN_LENGTH) return 1;
                     } else {
@@ -109,7 +115,7 @@ public class Game {
         for (int i = 0; i < NUM_POSSIBLE_DIAGONALS; i++) {
             if (i < 3) {
                 for (int j = 0; j < i + WIN_LENGTH; j++) {
-                    if (board[LAST_COLUMN - j][NUM_ROWS - WIN_LENGTH - i + j].equals(playerUnicode)) {
+                    if (board[LAST_COLUMN - j][NUM_ROWS - WIN_LENGTH - i + j].equals(playerChip)) {
                         numInSequence++;
                         if (numInSequence == WIN_LENGTH) return 1;
                     } else {
@@ -118,7 +124,7 @@ public class Game {
                 }
             } else {
                 for (int j = i - 2; j < NUM_COLUMNS; j++) {
-                    if (board[LAST_COLUMN - j][j - i + 2].equals(playerUnicode)) {
+                    if (board[LAST_COLUMN - j][j - i + 2].equals(playerChip)) {
                         numInSequence++;
                         if (numInSequence == WIN_LENGTH) return 1;
                     } else {
