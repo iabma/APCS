@@ -12,10 +12,12 @@ public class Game {
     private static final String PLAYER_ONE_UNICODE = "\u232C";
     private static final String PLAYER_TWO_UNICODE = "\u2311";
     private static final String ANSI_RESET = "\u001B[0m";
+    public static final int NUM_PLAYERS = 2;
     private static final int NUM_ROWS = 6;
     private static final int NUM_COLUMNS = 7;
-    private static final int LAST_ROW = NUM_ROWS - 1;
-    private static final int LAST_COLUMN = NUM_COLUMNS - 1;
+    private static final int LAST_ROW = NUM_ROWS - 1; // The index of the final row
+    private static final int LAST_COLUMN = NUM_COLUMNS - 1; // The index of the final column
+    // The number of parallel diagonal paths that could potentially contain a winning sequence.
     private static final int NUM_POSSIBLE_DIAGONALS = 6;
     // Number of diagonal lines starting from the side as opposed to the top.
     private static final int NUM_SIDE_DIAGONALS = 3;
@@ -30,8 +32,8 @@ public class Game {
     private static final int WIN_LENGTH = 4;
 
     private String[][] board;
-    private String[] color;
-    private Board visualBoard;
+    private String[] color; // The two colors chosen by the respective players
+    private Board visualBoard; // The Board object which is used to visualize the board array
 
     /**
      * Constructs a new game object and declares, initializes, and prints out the first instance

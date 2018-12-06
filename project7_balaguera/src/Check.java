@@ -14,7 +14,7 @@ public class Check {
     /**
      * Checks if inputted color is within the preset.
      * @param input user input through the console
-     * @return -1 if not present, index if present
+     * @return "invalid" if not present, desired ANSI color escape code if present
      */
     public static String isValidColor(String input) {
         int index = -1;
