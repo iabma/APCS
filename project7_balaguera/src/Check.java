@@ -46,7 +46,7 @@ public class Check {
     public static String isValidInt(String input) {
         if (!isInt(input).equals("valid")) return isInt(input);
         int intVersion = Integer.parseInt(input);
-        if (intVersion <= 7 && intVersion >= 1) {
+        if (intVersion <= Game.NUM_COLUMNS && intVersion >= 1) {
             return "valid";
         }
         return "Not a valid column! >>";

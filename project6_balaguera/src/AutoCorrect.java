@@ -25,9 +25,10 @@ public class AutoCorrect {
         }
 
         String closest = "!not!";
-        double smallest = 100;
+        double smallest = 50;
         for (int i = 0; i < TEAM_NAMES.length; i++) {
             double meanOffset = 0;
+
             for (int j = 0; j < seq.length; j++) {
                 int seqIndex = Arrays.toString(chars).indexOf(seq[j]);
                 int teamSeqIndex = Arrays.toString(chars).indexOf(teamSeq[i][j]);
@@ -38,6 +39,8 @@ public class AutoCorrect {
                 meanOffset += Math.abs(dist);
             }
             meanOffset += Math.abs(TEAM_NAMES[i].length() - seq.length);
+
+            if (TEAM_NAMES[i].contains(toCheck.toUpperCase())) meanOffset -= 100;
             //System.out.print(Math.abs(TEAM_NAMES[i].length() - seq.length) + " ");
             //System.out.println(meanOffset + " : " + TEAM_NAMES[i]);
             if (meanOffset < smallest) {

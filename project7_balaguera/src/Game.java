@@ -13,8 +13,8 @@ public class Game {
     private static final String PLAYER_TWO_UNICODE = "\u2311";
     private static final String ANSI_RESET = "\u001B[0m";
     public static final int NUM_PLAYERS = 2;
+    public static final int NUM_COLUMNS = 7;
     private static final int NUM_ROWS = 6;
-    private static final int NUM_COLUMNS = 7;
     private static final int LAST_ROW = NUM_ROWS - 1; // The index of the final row
     private static final int LAST_COLUMN = NUM_COLUMNS - 1; // The index of the final column
     // The number of parallel diagonal paths that could potentially contain a winning sequence.
@@ -94,28 +94,10 @@ public class Game {
     private int checkCondition(boolean player, int column, int row) {
         String playerChip = player ? color[0] + PLAYER_ONE_UNICODE + ANSI_RESET :
                 color[1] + PLAYER_TWO_UNICODE + ANSI_RESET;
-        if (row <= NUM_ROWS - WIN_LENGTH) {
-            int numInColumn = 0;
-            for (int i = 0; i < WIN_LENGTH; i++) {
-                if (board[column][row + i].equals(playerChip)) {
-                    numInColumn++;
-                    if (numInColumn == WIN_LENGTH) return 1;
-                } else {
-                    numInColumn = 0;
-                }
-            }
-        }
-        for (int i = 0; i < NUM_ROWS; i++) {
-            int numInRow = 0;
-            for (int j = 0; j < NUM_COLUMNS; j++) {
-                if (board[j][LAST_ROW - i].equals(playerChip)) {
-                    numInRow++;
-                    if (numInRow == WIN_LENGTH) return 1;
-                } else {
-                    numInRow = 0;
-                }
-            }
-        }
+
+        if (checkColumn(playerChip, column, row) == 1) return 1;
+
+        if (checkRow(playerChip) == 1) return 1;
 
         if (checkDiagonal(playerChip) == 1) return 1;
 
@@ -131,6 +113,43 @@ public class Game {
             if (column[0].equals(" ")) return 0;
         }
         return 2;
+    }
+
+    /*
+    If the chip is high enough in the column, the chips below it will be checked to see if they
+    are all the same as the one just placed.
+     */
+    private int checkColumn(String playerChip, int column, int row) {
+        if (row <= NUM_ROWS - WIN_LENGTH) {
+            int numInColumn = 0;
+            for (int i = 0; i < WIN_LENGTH; i++) {
+                if (board[column][row + i].equals(playerChip)) {
+                    numInColumn++;
+                    if (numInColumn == WIN_LENGTH) return 1;
+                } else {
+                    numInColumn = 0;
+                }
+            }
+        }
+        return 0;
+    }
+
+    /*
+    Checks the row in which the chip has just been placed for WIN_LENGTH consecutive chips
+     */
+    private int checkRow(String playerChip) {
+        for (int i = 0; i < NUM_ROWS; i++) {
+            int numInRow = 0;
+            for (int j = 0; j < NUM_COLUMNS; j++) {
+                if (board[j][LAST_ROW - i].equals(playerChip)) {
+                    numInRow++;
+                    if (numInRow == WIN_LENGTH) return 1;
+                } else {
+                    numInRow = 0;
+                }
+            }
+        }
+        return 0;
     }
 
     /*
