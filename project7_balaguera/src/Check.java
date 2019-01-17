@@ -67,24 +67,11 @@ public class Check {
     }
 
     /**
-     * Checks if the given Game instance has any space in the column specified by the user.
-     * @param input user input through the console
-     * @param game Game instance
-     * @return "valid" if space remains, error message if otherwise
-     */
-    public static String hasSpace(String input, Game game) {
-        if (!isValidInt(input).equals("valid")) return isValidInt(input);
-        int intVersion = Integer.parseInt(input);
-        return game.spaceInColumn(intVersion - 1);
-    }
-
-    /**
      * Checks if all parameters for a proper input are true
      * @param input user input through the console
-     * @param game Game instance
      * @return "valid" if valid input, error message if otherwise
      */
-    public static String isValid(String input, Game game) {
-        return hasSpace(input, game);
+    public static String isValid(String input) {
+        return isValidInt(input);
     }
 }

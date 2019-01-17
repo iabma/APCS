@@ -32,7 +32,7 @@ public class Driver {
         Game play = new Game(color);
 
         // Endgame outputs
-        if (playGame(play, name, color, input) == 1) {
+        if (playGame(play, name, color, input) == Event.WIN) {
             System.out.println(currentPlayer + " wins.");
         } else {
             System.out.println("Game ends in a tie.");
@@ -79,21 +79,27 @@ public class Driver {
     Alternates between players choosing the column in which they want to drop their chip until
     either one player wins or the board fills up and the game results in a tie.
      */
-    private static int playGame(Game game, String[] name, String[] color, Scanner input) {
+    private static Event playGame(Game game, String[] name, String[] color, Scanner input) {
         String column;
         boolean player = true;
-        int endGame = 0; // Game continues if 0, current player wins if 1, ends in a tie if 2
+        Event endGame = Event.CONTINUE;
 
-        while (endGame == 0) {
+        while (endGame == Event.CONTINUE) {
             currentPlayer = player ? color[0] + name[0] + ANSI_RESET :
                     color[1] + name[1] + ANSI_RESET;
             System.out.println(currentPlayer +" >>");
             column = input.nextLine();
-            while (!Check.isValid(column, game).equals("valid")) {
-                System.out.println(Check.isValid(column, game));
+            while (!Check.isValid(column).equals("valid")) {
+                System.out.println(Check.isValid(column));
                 column = input.nextLine();
             }
+
             endGame = game.addChip(Integer.parseInt(column) - 1, player);
+            while (endGame == Event.COLUMNFULL) {
+                System.out.println("Column is full! >>");
+                column = input.nextLine();
+                endGame = game.addChip(Integer.parseInt(column) - 1, player);
+            }
             player = !player;
         }
 

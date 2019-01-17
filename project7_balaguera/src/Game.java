@@ -33,7 +33,6 @@ public class Game {
 
     private String[][] board;
     private String[] color; // The two colors chosen by the respective players
-    private Board visualBoard; // The Board object which is used to visualize the board array
 
     /**
      * Constructs a new game object and declares, initializes, and prints out the first instance
@@ -46,8 +45,6 @@ public class Game {
         for (int i = 0; i < NUM_COLUMNS; i++) {
             Arrays.fill(board[i], " ");
         }
-        visualBoard = new Board();
-        System.out.println("\n" + visualBoard);
     }
 
     /**
@@ -57,7 +54,7 @@ public class Game {
      * @param player player whose chip will be added
      * @return 0 for no endgame, 1 for win, 2 for tie
      */
-    public int addChip(int column, boolean player) {
+    public Event addChip(int column, boolean player) {
         String playerChip = player ? color[0] + PLAYER_ONE_UNICODE + ANSI_RESET :
                 color[1] + PLAYER_TWO_UNICODE + ANSI_RESET;
         int row = LAST_ROW;
@@ -70,36 +67,35 @@ public class Game {
             }
         }
 
-        visualBoard.update(board[column], column);
         refresh(System.out);
         return checkCondition(player, column, row);
     }
 
-    /**
+    /*
      * Checks if there is any space left in the desired column to which a chip will be added.
-     * @param column desired column
-     * @return "valid" if space remains, error message if not
      */
-    public String spaceInColumn(int column) {
+    private boolean spaceInColumn(int column) {
         for (int i = 0; i < NUM_ROWS; i++) {
-            if (board[column][i].equals(" ")) return "valid";
+            if (board[column][i].equals(" ")) return true;
         }
-        return "Column is filled up! >>";
+        return false;
     }
 
     /*
     First checks if the player has four consecutive chips in a column. Next, checks every row
     and looks for four consecutive chips of the given player.
      */
-    private int checkCondition(boolean player, int column, int row) {
+    private Event checkCondition(boolean player, int column, int row) {
         String playerChip = player ? color[0] + PLAYER_ONE_UNICODE + ANSI_RESET :
                 color[1] + PLAYER_TWO_UNICODE + ANSI_RESET;
 
-        if (checkColumn(playerChip, column, row) == 1) return 1;
+        if (!spaceInColumn(column)) return Event.COLUMNFULL;
 
-        if (checkRow(playerChip) == 1) return 1;
+        if (checkColumn(playerChip, column, row) == Event.WIN) return Event.WIN;
 
-        if (checkDiagonal(playerChip) == 1) return 1;
+        if (checkRow(playerChip) == Event.WIN) return Event.WIN;
+
+        if (checkDiagonal(playerChip) == Event.WIN) return Event.WIN;
 
         return checkTie();
     }
@@ -108,48 +104,48 @@ public class Game {
     If the top row has been filled up, we can infer that the board has been filled up, and thus
     the method will return a 2, which indicates a tie. Otherwise, it will return a 0.
      */
-    private int checkTie() {
+    private Event checkTie() {
         for (String[] column : board) {
-            if (column[0].equals(" ")) return 0;
+            if (column[0].equals(" ")) return Event.CONTINUE;
         }
-        return 2;
+        return Event.TIE;
     }
 
     /*
     If the chip is high enough in the column, the chips below it will be checked to see if they
     are all the same as the one just placed.
      */
-    private int checkColumn(String playerChip, int column, int row) {
+    private Event checkColumn(String playerChip, int column, int row) {
         if (row <= NUM_ROWS - WIN_LENGTH) {
             int numInColumn = 0;
             for (int i = 0; i < WIN_LENGTH; i++) {
                 if (board[column][row + i].equals(playerChip)) {
                     numInColumn++;
-                    if (numInColumn == WIN_LENGTH) return 1;
+                    if (numInColumn == WIN_LENGTH) return Event.WIN;
                 } else {
                     numInColumn = 0;
                 }
             }
         }
-        return 0;
+        return Event.CONTINUE;
     }
 
     /*
     Checks the row in which the chip has just been placed for WIN_LENGTH consecutive chips
      */
-    private int checkRow(String playerChip) {
+    private Event checkRow(String playerChip) {
         for (int i = 0; i < NUM_ROWS; i++) {
             int numInRow = 0;
             for (int j = 0; j < NUM_COLUMNS; j++) {
                 if (board[j][LAST_ROW - i].equals(playerChip)) {
                     numInRow++;
-                    if (numInRow == WIN_LENGTH) return 1;
+                    if (numInRow == WIN_LENGTH) return Event.WIN;
                 } else {
                     numInRow = 0;
                 }
             }
         }
-        return 0;
+        return Event.CONTINUE;
     }
 
     /*
@@ -157,7 +153,7 @@ public class Game {
     playerChip can be consecutively found four times. If so, the method returns 1. Otherwise, it
     returns 0.
      */
-    private int checkDiagonal(String playerChip) {
+    private Event checkDiagonal(String playerChip) {
         int numInSequence;
 
         // Upper left to lower right
@@ -167,7 +163,7 @@ public class Game {
                 for (int j = 0; j < i + WIN_LENGTH; j++) {
                     if (board[j][NUM_ROWS - WIN_LENGTH - i + j].equals(playerChip)) {
                         numInSequence++;
-                        if (numInSequence == WIN_LENGTH) return 1;
+                        if (numInSequence == WIN_LENGTH) return Event.WIN;
                     } else {
                         numInSequence = 0;
                     }
@@ -176,7 +172,7 @@ public class Game {
                 for (int j = i - FIRST_COLUMN_OFFSET; j < NUM_COLUMNS; j++) {
                     if (board[j][j - i + FIRST_COLUMN_OFFSET].equals(playerChip)) {
                         numInSequence++;
-                        if (numInSequence == WIN_LENGTH) return 1;
+                        if (numInSequence == WIN_LENGTH) return Event.WIN;
                     } else {
                         numInSequence = 0;
                     }
@@ -191,7 +187,7 @@ public class Game {
                 for (int j = 0; j < i + WIN_LENGTH; j++) {
                     if (board[LAST_COLUMN - j][NUM_ROWS - WIN_LENGTH - i + j].equals(playerChip)) {
                         numInSequence++;
-                        if (numInSequence == WIN_LENGTH) return 1;
+                        if (numInSequence == WIN_LENGTH) return Event.WIN;
                     } else {
                         numInSequence = 0;
                     }
@@ -200,7 +196,7 @@ public class Game {
                 for (int j = i - FIRST_COLUMN_OFFSET; j < NUM_COLUMNS; j++) {
                     if (board[LAST_COLUMN - j][j - i + FIRST_COLUMN_OFFSET].equals(playerChip)) {
                         numInSequence++;
-                        if (numInSequence == WIN_LENGTH) return 1;
+                        if (numInSequence == WIN_LENGTH) return Event.WIN;
                     } else {
                         numInSequence = 0;
                     }
@@ -208,7 +204,7 @@ public class Game {
             }
         }
 
-        return 0;
+        return Event.CONTINUE;
     }
 
     /*
@@ -224,6 +220,19 @@ public class Game {
      */
     @Override
     public String toString() {
-        return visualBoard.toString();
+        StringBuilder print = new StringBuilder("\n");
+        for (int i = 0; i < NUM_ROWS; i++) {
+            print.append("|");
+            for (int j = 0; j < NUM_COLUMNS; j++) {
+                print.append(" " + board[j][i] + " |");
+            }
+            print.append("\n");
+        }
+        print.append("-----------------------------\n|");
+        for (int i = 0; i < NUM_COLUMNS; i++) {
+            print.append(" " + (i + 1) + " |");
+        }
+        print.append("\n-----------------------------\n");
+        return print.toString();
     }
 }
